@@ -1,0 +1,29 @@
+[2026-04-02 05:20:43] INFO [mirofish.create_app:38] ==================================================
+[2026-04-02 05:20:43] INFO [mirofish.create_app:39] MiroFish Backend 启动中...
+[2026-04-02 05:20:43] INFO [mirofish.create_app:40] ==================================================
+[2026-04-02 05:20:43] INFO [mirofish.create_app:49] 已注册模拟进程清理函数
+[2026-04-02 05:20:43] INFO [mirofish.create_app:77] MiroFish Backend 启动完成
+[2026-04-02 05:22:14] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/ontology/generate
+[2026-04-02 05:22:14] INFO [mirofish.api.generate_ontology:150] === 开始生成本体定义 ===
+[2026-04-02 05:22:14] DEBUG [mirofish.api.generate_ontology:157] 项目名称: Unnamed Project
+[2026-04-02 05:22:14] DEBUG [mirofish.api.generate_ontology:158] 模拟需求: Simulate different real-world users reacting to this startup. Show whether they would use it, pay fo...
+[2026-04-02 05:22:14] INFO [mirofish.api.generate_ontology:177] 创建项目: proj_55ec66b0213e
+[2026-04-02 05:22:14] INFO [mirofish.api.generate_ontology:212] 文本提取完成，共 68973 字符
+[2026-04-02 05:22:14] INFO [mirofish.api.generate_ontology:215] 调用 LLM 生成本体定义...
+[2026-04-02 05:22:19] DEBUG [mirofish.request.log_response:62] 响应: 500
+[2026-04-02 05:22:20] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/ontology/generate
+[2026-04-02 05:22:20] INFO [mirofish.api.generate_ontology:150] === 开始生成本体定义 ===
+[2026-04-02 05:22:20] DEBUG [mirofish.api.generate_ontology:157] 项目名称: Unnamed Project
+[2026-04-02 05:22:20] DEBUG [mirofish.api.generate_ontology:158] 模拟需求: Simulate different real-world users reacting to this startup. Show whether they would use it, pay fo...
+[2026-04-02 05:22:20] INFO [mirofish.api.generate_ontology:177] 创建项目: proj_4b6f733e29b2
+[2026-04-02 05:22:20] INFO [mirofish.api.generate_ontology:212] 文本提取完成，共 68973 字符
+[2026-04-02 05:22:20] INFO [mirofish.api.generate_ontology:215] 调用 LLM 生成本体定义...
+[2026-04-02 05:22:20] DEBUG [mirofish.request.log_response:62] 响应: 500
+[2026-04-02 05:22:23] DEBUG [mirofish.request.log_request:55] 请求: POST /api/graph/ontology/generate
+[2026-04-02 05:22:23] INFO [mirofish.api.generate_ontology:150] === 开始生成本体定义 ===
+[2026-04-02 05:22:23] DEBUG [mirofish.api.generate_ontology:157] 项目名称: Unnamed Project
+[2026-04-02 05:22:23] DEBUG [mirofish.api.generate_ontology:158] 模拟需求: Simulate different real-world users reacting to this startup. Show whether they would use it, pay fo...
+[2026-04-02 05:22:23] INFO [mirofish.api.generate_ontology:177] 创建项目: proj_74e216704aac
+[2026-04-02 05:22:23] INFO [mirofish.api.generate_ontology:212] 文本提取完成，共 68973 字符
+[2026-04-02 05:22:23] INFO [mirofish.api.generate_ontology:215] 调用 LLM 生成本体定义...
+[2026-04-02 05:22:23] DEBUG [mirofish.request.log_response:62] 响应: 500
