@@ -4,7 +4,7 @@
 # Python 3.11+ required
 # Install: pip install -r requirements.txt
 # ===========================================
-
+gunicorn>=22.0.0
 # ============= 核心框架 =============
 flask>=3.0.0
 flask-cors>=6.0.0
