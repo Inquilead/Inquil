@@ -61,7 +61,6 @@ class Config:
     # 全自动流水线（website → /api/pipeline/start）
     PIPELINE_MAX_ROUNDS = os.environ.get('PIPELINE_MAX_ROUNDS')  # optional cap on OASIS rounds
     PIPELINE_PARALLEL_PROFILES = int(os.environ.get('PIPELINE_PARALLEL_PROFILES', '5'))
-    PIPELINE_SIMULATION_TIMEOUT_SEC = int(os.environ.get('PIPELINE_SIMULATION_TIMEOUT_SEC', str(3 * 3600)))
     
     # Report Agent配置
     REPORT_AGENT_MAX_TOOL_CALLS = int(os.environ.get('REPORT_AGENT_MAX_TOOL_CALLS', '5'))
