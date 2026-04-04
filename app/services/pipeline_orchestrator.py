@@ -135,7 +135,6 @@ def run_full_pipeline(
             max_rounds = None
 
     parallel_profiles = Config.PIPELINE_PARALLEL_PROFILES
-    sim_timeout = Config.PIPELINE_SIMULATION_TIMEOUT_SEC
 
     try:
         _update(tm, task_id, 2, "Creating project…", stage="ontology")
@@ -157,7 +156,6 @@ def run_full_pipeline(
             extra={"project_id": project_id},
         )
         generator = OntologyGenerator()
-        doc_label = f"=== {source_filename} ===\n{document_text}"
         ontology = generator.generate(
             document_texts=[document_text],
             simulation_requirement=simulation_requirement,
@@ -246,9 +244,9 @@ def run_full_pipeline(
             graph_id=None,
         )
 
-        deadline = time.time() + sim_timeout
         last_prog = 73
-        while time.time() < deadline:
+        # Wait until the simulation finishes — no wall-clock deadline (can run as long as OASIS needs).
+        while True:
             rs = SimulationRunner.get_run_state(simulation_id)
             if not rs:
                 time.sleep(3)
@@ -268,8 +266,6 @@ def run_full_pipeline(
                 extra={"project_id": project_id, "simulation_id": simulation_id},
             )
             time.sleep(5)
-        else:
-            raise RuntimeError("Simulation timed out waiting for completion")
 
         _update(
             tm,
