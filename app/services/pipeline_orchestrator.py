@@ -118,9 +118,12 @@ def run_full_pipeline(
     source_filename: str,
     task_id: str,
     task_manager: TaskManager,
+    simulation_run_id: Optional[str] = None,
+    user_id: Optional[str] = None,
 ) -> None:
     """
     Full automated run. Updates task_manager task_id; on success completes with result dict.
+    Optional simulation_run_id + user_id sync status and report to Supabase.
     """
     tm = task_manager
     project_id: Optional[str] = None
@@ -310,6 +313,21 @@ def run_full_pipeline(
         if report.status != ReportStatus.COMPLETED:
             raise RuntimeError(report.error or "Report generation failed")
 
+        if simulation_run_id and user_id:
+            from ..services.supabase_jobs import mark_run_completed
+
+            try:
+                mark_run_completed(
+                    simulation_run_id=simulation_run_id,
+                    user_id=user_id,
+                    report_id=report.report_id,
+                    markdown_content=report.markdown_content or "",
+                    simulation_id=simulation_id,
+                    project_id=project_id,
+                )
+            except Exception:
+                logger.exception("Supabase mark_run_completed failed (report saved on disk)")
+
         tm.update_task(
             task_id,
             status=TaskStatus.COMPLETED,
@@ -338,4 +356,11 @@ def run_full_pipeline(
 
     except Exception as e:
         logger.error("Pipeline failed: %s", traceback.format_exc())
+        if simulation_run_id:
+            from ..services.supabase_jobs import mark_run_failed
+
+            try:
+                mark_run_failed(simulation_run_id=simulation_run_id, error_message=str(e))
+            except Exception:
+                logger.exception("Supabase mark_run_failed failed")
         tm.fail_task(task_id, str(e))

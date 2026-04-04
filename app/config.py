@@ -62,6 +62,15 @@ class Config:
     PIPELINE_MAX_ROUNDS = os.environ.get('PIPELINE_MAX_ROUNDS')  # optional cap on OASIS rounds
     PIPELINE_PARALLEL_PROFILES = int(os.environ.get('PIPELINE_PARALLEL_PROFILES', '5'))
     
+    # Supabase: report storage + simulation_runs table (free tier friendly)
+    SUPABASE_URL = os.environ.get('SUPABASE_URL', '').rstrip('/')
+    SUPABASE_SERVICE_ROLE_KEY = os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
+    # Project Settings → API → JWT Secret (verify user access tokens from the website)
+    SUPABASE_JWT_SECRET = os.environ.get('SUPABASE_JWT_SECRET', '')
+    SUPABASE_REPORTS_BUCKET = os.environ.get('SUPABASE_REPORTS_BUCKET', 'reports')
+    # Optional: separate secret for signing session JWTs from /api/auth/login. Defaults to SECRET_KEY.
+    MIROFISH_SESSION_JWT_SECRET = os.environ.get('MIROFISH_SESSION_JWT_SECRET', '').strip()
+    
     # Report Agent配置
     REPORT_AGENT_MAX_TOOL_CALLS = int(os.environ.get('REPORT_AGENT_MAX_TOOL_CALLS', '5'))
     REPORT_AGENT_MAX_REFLECTION_ROUNDS = int(os.environ.get('REPORT_AGENT_MAX_REFLECTION_ROUNDS', '2'))
